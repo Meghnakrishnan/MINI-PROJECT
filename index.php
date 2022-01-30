@@ -1,5 +1,7 @@
-<?php 
+<?php
 include('./header_footer/header.php');
+$query = "select * from item_details where status=1";
+$items = $db->query($query);
 ?>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -41,10 +43,10 @@ include('./header_footer/header.php');
           <option value="">12</option>
           <option value="">24</option>
           <option value="">48</option>
-        </select> 
+        </select>
       </div>
     </div>
-    
+
 
 
     <div class="col-md-3 order-md-0 mt-2 mt-md-0">
@@ -52,9 +54,9 @@ include('./header_footer/header.php');
         <option value="">Sort By</option>
         <option value="">Popylar</option>
         <option value="">Name</option>
-      </select>  
+      </select>
     </div>
-    
+
   </div>
 </div>
 
@@ -64,213 +66,69 @@ include('./header_footer/header.php');
 
 <div class="container">
   <div class="row">
-
-    <div class="col-md-4 mb-3">
-      <div class="card h-100">
-        <div class="d-flex justify-content-between position-absolute w-100">
-          <!-- <div class="label-new">
-            <span class="text-white bg-success small d-flex align-items-center px-2 py-1">
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <span class="ml-1">New</span>
-            </span>
-          </div> -->
-          <!-- <div class="label-sale">
-            <span class="text-white bg-primary small d-flex align-items-center px-2 py-1">
-              <i class="fa fa-tag" aria-hidden="true"></i>
-              <span class="ml-1">Sale</span>
-            </span>
-          </div> -->
-        </div>
-        <a href="#">
-          <img src="./images/pexels-abhinav-goswami-291528.jpg" class="card-img-top" alt="Product" style="max-height: 230px;">
-        </a>
-        <div class="card-body px-2 pb-2 pt-1">
-          <div class="d-flex justify-content-between">
-            <div>
-              <p class="h4 text-primary">400 Rs</p>
-            </div>
-            <div>
-              <!-- <a href="#" class="text-secondary lead" data-toggle="tooltip" data-placement="left" title="Compare">
+    <?php
+    if ($items->num_rows > 0) {
+      while($obj = $items->fetch_object()) {
+    ?>
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <a href="#">
+              <img src="data:image/png;base64,<?=base64_encode($obj->image)?>" class="card-img-top" alt="Product" style="max-height: 230px;">
+            </a>
+            <div class="card-body px-2 pb-2 pt-1">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <p class="h4 text-primary"><?=$obj->price?> &#8377;</p>
+                </div>
+                <div>
+                  <!-- <a href="#" class="text-secondary lead" data-toggle="tooltip" data-placement="left" title="Compare">
                 <i class="fa fa-line-chart" aria-hidden="true"></i>
               </a> -->
-            </div>
-          </div>
-          <p class="text-warning d-flex align-items-center mb-2">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          </p>
-          <p class="mb-0">
-            <strong>
-              <a href="#" class="text-secondary">Chocolate cake</a>
-            </strong>
-          </p>
-         
-          <div class="d-flex mb-3 justify-content-between">
-            
-            <div class="text-right">
-              <p class="mb-0 small"><b>Free Shipping</b></p>
-             
-            </div>
-          </div>
-          <div class="d-flex justify-content-between">
-            <!-- <div class="col px-0">
-              <button class="btn btn-outline-primary btn-block">
-                Add To Cart 
-                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-              </button>
-            </div> -->
-            <!-- <div class="ml-2">
-              <a href="#" class="btn btn-outline-success" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                <i class="fa fa-heart" aria-hidden="true"></i>
-              </a>
-            </div> -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <div class="card h-100">
-        <div class="d-flex justify-content-between position-absolute w-100">
-          <!-- <div class="label-new">
-            <span class="text-white bg-success small d-flex align-items-center px-2 py-1">
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <span class="ml-1">New</span>
-            </span>
-          </div> -->
-          <!-- <div class="label-sale">
-            <span class="text-white bg-primary small d-flex align-items-center px-2 py-1">
-              <i class="fa fa-tag" aria-hidden="true"></i>
-              <span class="ml-1">Sale</span>
-            </span>
-          </div> -->
-        </div>
-        <a href="#">
-          <img src="./images/pexels-daria-shevtsova-1070850.jpg" class="card-img-top" alt="Product" style="max-height: 230px;">
-        </a>
-        <div class="card-body px-2 pb-2 pt-1">
-          <div class="d-flex justify-content-between">
-            <div>
-              <p class="h4 text-primary">500 Rs</p>
-            </div>
-            <div>
-              <!-- <a href="#" class="text-secondary lead" data-toggle="tooltip" data-placement="left" title="Compare">
-                <i class="fa fa-line-chart" aria-hidden="true"></i>
-              </a> -->
-            </div>
-          </div>
-          <p class="text-warning d-flex align-items-center mb-2">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          </p>
-          <p class="mb-0">
-            <strong>
-              <a href="#" class="text-secondary">White forest cake</a>
-            </strong>
-          </p>
-         
-          <div class="d-flex mb-3 justify-content-between">
-            
-            <div class="text-right">
-              <p class="mb-0 small"><b>Free Shipping</b></p>
-             
-            </div>
-          </div>
-          <div class="d-flex justify-content-between">
-            <!-- <div class="col px-0">
-              <button class="btn btn-outline-primary btn-block">
-                Add To Cart 
-                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-              </button>
-            </div> -->
-            <!-- <div class="ml-2">
-              <a href="#" class="btn btn-outline-success" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                <i class="fa fa-heart" aria-hidden="true"></i>
-              </a>
-            </div> -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <div class="card h-100">
-        <div class="d-flex justify-content-between position-absolute w-100">
-          <!-- <div class="label-new">
-            <span class="text-white bg-success small d-flex align-items-center px-2 py-1">
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <span class="ml-1">New</span>
-            </span>
-          </div> -->
-          <!-- <div class="label-sale">
-            <span class="text-white bg-primary small d-flex align-items-center px-2 py-1">
-              <i class="fa fa-tag" aria-hidden="true"></i>
-              <span class="ml-1">Sale</span>
-            </span>
-          </div> -->
-        </div>
-        <a href="#">
-          <img src="./images/pexels-vojtech-okenka-1055272.jpg" class="card-img-top" alt="Product" style="max-height: 230px;">
-        </a>
-        <div class="card-body px-2 pb-2 pt-1">
-          <div class="d-flex justify-content-between">
-            <div>
-              <p class="h4 text-primary">300 Rs</p>
-            </div>
-            <div>
-              <!-- <a href="#" class="text-secondary lead" data-toggle="tooltip" data-placement="left" title="Compare">
-                <i class="fa fa-line-chart" aria-hidden="true"></i>
-              </a> -->
-            </div>
-          </div>
-          <p class="text-warning d-flex align-items-center mb-2">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          </p>
-          <p class="mb-0">
-            <strong>
-              <a href="#" class="text-secondary">Cup cake</a>
-            </strong>
-          </p>
-         
-          <div class="d-flex mb-3 justify-content-between">
-            
-            <div class="text-right">
-              <p class="mb-0 small"><b>Free Shipping</b></p>
-             
-            </div>
-          </div>
-           <!--<div class="d-flex justify-content-between">
-            <div class="col px-0">
-              <button class="btn btn-outline-primary btn-block">
-                Add To Cart 
-                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-              </button>
-            </div>
-            <div class="ml-2">
-              <a href="#" class="btn btn-outline-success" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-                <i class="fa fa-heart" aria-hidden="true"></i>
-              </a>
-            </div> 
-          </div>-->
-        </div>
-      </div>
-    </div>
+                </div>
+              </div>
+              <p class="text-warning d-flex align-items-center mb-2">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </p>
+              <p class="mb-0">
+                <strong>
+                  <a href="#" class="text-secondary"><?=$obj->name?></a>
+                </strong>
+              </p>
+              <p class="mb-1">
+                <small>
+                  <a href="#" class="text-secondary"><?=$obj->description?></a>
+                </small>
+              </p>
+              <div class="d-flex mb-3 justify-content-between">
+                <?php 
+                $isadmin = $_SESSION['is_admin'];
+                                if($isadmin == 1) {
+                            ?>
+                            
+                            <?php 
+                                } else {
+                            ?>
+                            <a class="btn btn-primary col" href="./order.php?id=<?=$obj->item_id?>">Order Now</a>
+                            <?php 
+                                }
+                            ?>
+                
+              </div>
 
-    
-
+            </div>
+          </div>
+        </div>
+      <?php
+      }
+    } else { ?>
+      No Items
+    <?php } ?>
   </div>
 </div>
-
-
-<
 
 <div class="container pb-5">
   <div class="row align-items-center justify-content-between">
@@ -284,10 +142,10 @@ include('./header_footer/header.php');
           <option value="">12</option>
           <option value="">24</option>
           <option value="">48</option>
-        </select> 
+        </select>
       </div>
     </div>
-    
+
     <!-- <div class="col-5 text-right">
         <a href="#" class="btn btn-primary grid-view btn-sm">
           <i class="fa fa-th-large"></i>
@@ -296,9 +154,9 @@ include('./header_footer/header.php');
           <i class="fa fa-bars"></i>
         </a>
     </div> -->
-    
+
   </div>
 </div>
-<?php 
+<?php
 include('./header_footer/footer.php');
 ?>
